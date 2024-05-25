@@ -8,8 +8,14 @@ const startServer = async () => {
 
   await ExpressApp(app);
 
-  app.listen(8000, () => {
+  const server = app.listen(8000, () => {
     console.log('listening to port 8000');
+  });
+
+  // Handling Error
+  process.on('unhandledRejection', (err) => {
+    console.log(`An error occurred: ${(err as Error).message}`);
+    server.close(() => process.exit(1));
   });
 };
 
