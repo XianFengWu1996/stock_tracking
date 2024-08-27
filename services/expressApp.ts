@@ -90,10 +90,12 @@ export const ExpressApp = async (app: Application) => {
       job.schedule(async () => {
         const inStockText = await getInStockText(req.body.url);
         logger.info(`Currently tracking ${inStockText.titleText}`);
+        console.log('tracking');
 
         if (inStockText.inStockText === inStockTextToMatch) {
           await sendEmailNotification(inStockText.titleText, req.body.url);
           logger.info(`The job has ended`);
+          console.log('job ended');
 
           job.stop();
         }
@@ -102,6 +104,7 @@ export const ExpressApp = async (app: Application) => {
       res.status(200).json({ success: true, message: 'Email notification has been sent' });
     } catch (error) {
       logger.error(error);
+      console.log(error);
 
       next(error);
     }
