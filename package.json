@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.ts",
-    "dev": "NODE_ENV=local nodemon index.ts"
+    "dev": "NODE_ENV=local nodemon index.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
