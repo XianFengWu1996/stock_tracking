@@ -68,7 +68,8 @@ export const ExpressApp = async (app: Application) => {
 
   const checkSecret = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req.headers.authorization);
+      console.log(req.headers.authorization?.replace('Bearer ', ''));
+      console.log(config().secret);
 
       if (req.headers.authorization?.replace('Bearer ', '') !== config().secret) throw new NotAuthroizedError();
       next();
