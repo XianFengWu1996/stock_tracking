@@ -2,7 +2,9 @@ export type AppConfig = {
   apiUrl: string;
   port: number;
   env: string;
-  mongoUri: string;
+  nodemailer_user: string;
+  nodemailer_pass: string;
+  secret: string;
 };
 
 export const config: () => AppConfig = () => {
@@ -10,6 +12,8 @@ export const config: () => AppConfig = () => {
     apiUrl: process.env.API_URL || '',
     port: process.env.PORT ? parseInt(process.env.PORT) : 8000,
     env: process.env.NODE_ENV || '',
-    mongoUri: process.env.MONGO_URI || '',
+    nodemailer_user: process.env.NODEMAILER_USER || '',
+    nodemailer_pass: process.env.NODEMAILER_PASS || '',
+    secret: process.env.SECRET || '',
   };
 };
