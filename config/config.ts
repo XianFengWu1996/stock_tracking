@@ -8,6 +8,7 @@ export type AppConfig = {
 };
 
 export const config: () => AppConfig = () => {
+  console.log(process.env.SECRET);
   return {
     apiUrl: process.env.API_URL || '',
     port: process.env.PORT ? parseInt(process.env.PORT) : 8000,
