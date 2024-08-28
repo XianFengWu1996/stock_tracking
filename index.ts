@@ -8,7 +8,7 @@ const startServer = async () => {
 
   await ExpressApp(app);
 
-  const server = app.listen(8000, () => {
+  const server = app.listen(process.env.PORT, () => {
     console.log('listening to port 8000');
   });
 
